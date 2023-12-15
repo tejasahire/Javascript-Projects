@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 1rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0,0,0, 0.448);
+    transition: all 0.45s;
+   }
+   button:hover{
+    box-shadow: 0px 0px 10px rgba(0,0,0, 0.448);
+    
+   }
+    </style>
+</head>
+<body>
+    <button>Stop Changing</button>
+
+<script>
+    const body=document.body
+const btn=document.querySelector('button')
+const id=setInterval(()=>{
+
+const red=Math.floor(Math.random()*126)
+const green=Math.floor(Math.random()*126)
+const blue=Math.floor(Math.random()*126)
+const rgb=`rgb(${red},${green},${blue})`
+body.style.background=rgb
+
+},1000)
+
+
+
+btn.addEventListener('click',()=>{
+clearInterval(id)
+btn.textContent=body.style.background
+// btn.textContent=rgb
+})
+
+
+</script>
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
