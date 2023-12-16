@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .hero{
+        /* border: 2px solid red; */
+        width: 100%;
+        min-height: 100vh;
+        background: linear-gradient(45deg,#010758,#490d61);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #fff;
+
+    }
+    .hero h1{
+        font-size: 45px;
+        font-weight: 500;
+        margin-top: -50px;
+        margin-bottom: 50px;
+    }
+    .hero h1 span{
+        color: #ff2963;
+    }
+    textarea{
+        width: 600px;
+        height: 250px;
+        background: #403d84;
+        color: #fff;
+        font-size: 15px;
+        border: 0;
+        outline: 0;
+        padding: 20px;
+        border-radius: 10px;
+        resize: none;
+        margin-bottom: 30px;
+    }
+    textarea::placeholder{
+       font-size: 16px; 
+       color: #ddd;
+
+    }
+    .row{
+        width: 600px;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    button{
+        background: #ff2963;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px 30px;
+        border-radius: 35px;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    button img{
+        width: 16px;
+        margin-right: 10px;
+    }
+    select{
+        flex: 1;
+        color: #fff;
+        background: #403d84;
+        height: 50px;
+        padding: 0 20px;
+        outline: 0;
+        border: 0;
+        border-radius: 35px;
+        appearance: none;
+        background-image: url('https://t3.ftcdn.net/jpg/04/83/39/12/360_F_483391217_rDo0Gdjp71zXabPRjeaE1O3I85R6nIgB.jpg');
+        background-repeat: no-repeat;
+        background-size:15px ;
+        background-position-x: calc(100% - 20px);
+        background-position-y:  20px;
+    }
+</style>
+<body>
+    <div class="hero">
+        <h1>Text To Speech <span>Converter</span></h1>
+        <textarea placeholder="Write anything here..."></textarea>
+        <div class="row">
+            <select ></select>
+            <button> <img src="data:image/png;base64,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" alt=""> Listen</button>
+        </div>
+    </div>
+    <script>
+        let speech=new SpeechSynthesisUtterance()
+       
+        let voices =[];
+
+        let voiceSelect=document.querySelector("select")
+
+        window.speechSynthesis.onvoiceschanged=()=>{
+            voices=window.speechSynthesis.getVoices();
+            speech.voice = voices[0];
+
+            voices.forEach((voice,i)=>(voiceSelect.options[i]=new Option(voice.name,i)))
+        }
+
+
+        voiceSelect.addEventListener("change",()=>{
+            speech.voice=voices[voiceSelect.value]
+        })
+
+        document.querySelector('button').addEventListener("click",()=>{
+            speech.text = document.querySelector("textarea").value;
+            window.speechSynthesis.speak(speech)
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
