@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="api" value="Call API">
+
+    <div class="container">
+    <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Email</th>
+            <th scope="col">First_Name</th>
+            <th scope="col">Last_Name</th>
+            <th scope="col">Avtar</th>
+          </tr>
+        </thead>
+        <tbody id="table_body">
+        
+        </tbody>
+      </table>
+    </div>
+    
+    
+    <script>
+const api=document.getElementById('api')
+api.addEventListener('click',function(){
+    const URL='https://reqres.in/api/users?page=2'
+fetch(URL)
+.then(Response=>{
+   return Response.json()
+}).then(data=>{
+   console.log(data)
+   let datas = document.getElementById('table_body')
+   for(i=0;i<=5;i++){
+    let id=data.data[i].id
+    let email=data.data[i].email
+    let fname=data.data[i].first_name
+    let lname=data.data[i].last_name
+    let img=data.data[i].avatar
+  datas.innerHTML+=`<tr>
+            <td>${id}</td>
+            <td>${email}</td>
+            <td>${fname}</td>
+            <td>${lname}</td>
+            <td><img src='${img}'/></td>
+          </tr>`
+
+
+   }
+   
+//    console.log(data.data[1].id)
+//    console.log(data.data[1].email)
+//    console.log(data.data[1].first_name)
+//    console.log(data.data[1].)
+//    console.log(data.data[1].avatar)
+})
+})
+    
+    </script>
+</body>
+</html>
