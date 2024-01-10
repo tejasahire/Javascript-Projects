@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+  
+<script>
+  //************************** Delete Operation************************************
+  function test(ab){
+    let num=ab
+    // num=String(num)
+    
+    alert('Id number is  ' +num);
+    alert('You are sure to delete')
+    alert('Delete Sucessfully')
+    let URL=`https://codingseekho.in/APP/LIFE_EXPRESS/delete_hospital.php?id=${num}`
+            fetch(URL)
+            .then(response=>{
+                return response.json()
+
+            })
+            .then(data=>{
+                // console.log(data)
+                location.reload()
+                alert(response.data.posts.status+ "Delete Success");
+                
+            }).catch(error=>{
+                console.log(error)
+            })
+            // location.reload()
+       }
+      
+</script>
+</head>
+<style>
+  #abc{
+    color:green;
+    /* background-color: green; */
+
+  }
+</style>
+<style>
+  #nm{
+    width: 27%;
+    
+  }
+  #ar{
+    width: 30%;
+  }
+  #ct{
+  width: 10%;
+  }
+  #pin{
+    width: 10%;
+  }
+  #mob{
+   width: 13%;
+  }
+  #btn{
+    width: 8%;
+  }
+  /* #nm:hover{
+    padding: 5px;
+  } */
+</style>
+<body>
+
+    <!-- ----------------------------Add Data      &     Show Data----------------- -->
+
+ 
+    <div class="container"> 
+      <br>
+      <input type="text" id="nm" placeholder="Name">
+      <input type="text" id="ar" placeholder="Area">
+      <input type="text" id="ct" placeholder="city">
+      <input type="text" id="pin" placeholder="Pincode">
+      <input type="text" id="mob" placeholder="Mobile">
+      <input type="button" id="btn" class="btn btn-primary" value="Add Data" >
+      <br>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">area</th>
+            <th scope="col">City</th>
+            <th scope="col">PinCode</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody id="table_body">
+        
+        </tbody>
+      </table>
+    </div>
+    
+    <script>
+// ****************************** Read data *************************************//
+    function on(){
+
+    
+    const URL='https://codingseekho.in/APP/LIFE_EXPRESS/hospital_list.php?ct='
+fetch(URL)
+.then(Response=>{
+   return Response.json()
+}).then(data=>{
+   console.log(data)
+//    console.log(data.posts.post[0].HNAME)
+   let datas = document.getElementById('table_body')
+   let l=data.posts.post;
+   for(let i=0;i<l.length;i++){
+    let id=data.posts.post[i].HID
+    let name=data.posts.post[i].HNAME
+    let area=data.posts.post[i].AREA
+    let city=data.posts.post[i].CITY
+    let mob=data.posts.post[i].MOB
+    let pin=data.posts.post[i].PIN
+    let del=id
+
+     let a=JSON.stringify(name)
+     let b=JSON.stringify(area)
+     let c=JSON.stringify(city)
+     let d=JSON.stringify(mob)
+
+    datas.innerHTML+=`<tr>
+             <td>${id}</td>
+             <td>${name}</td>
+             <td>${area}</td>
+              <td>${city}</td>
+              <td>${pin}</td>
+             <td><a href="tel:${mob}">📞${mob}</a></td>
+             
+             
+             <td><input class="btn btn-success" type='button' id='up' onclick='upd(${id},${a},${b},${c},${pin},${d})' value='update'</td>
+             <td><input class="btn btn-danger" type='button' id='hid' value='Delete'  onclick='test(${id})'></td>
+           </tr>`
+         
+          
+          }  
+         
+        })
+
+  }
+    
+    document.addEventListener('DOMContentLoaded', on);
+
+ </script>
+
+
+<!-- ------------------------------------Update Scripting------------------------------------------------------ -->
+<script>
+
+  function upd(id,name,area,city,pin,mob){
+
+  let Id=prompt("Update Against Id",id)
+  let Name=prompt("Update Name",name)
+  let Area=prompt("Update Area",area)
+  let City =prompt("Update City ",city)
+  let Pin =prompt("Update Pin",pin)
+  let Mob =prompt("Update Name",mob)
+  
+  let URL=`https://codingseekho.in/APP/LIFE_EXPRESS/update_hospital.php?hname=${Name}&addr=${Area}&city=${City}&mob=${Mob}&pin=${Pin}&id=${Id}`
+  fetch(URL)
+            .then(response=>{
+                return response.json()
+
+            })
+            .then(data=>{
+              location.reload()
+                // console.log(data)
+                alert(response.data.posts.status+ "Insert Success");
+                // location.reload();
+            }).catch(error=>{
+                console.log(error)
+            })
+}
+</script>
+<!-- -------------------------------------------------------------------------------------------------------- -->
+
+<!--                             Add data                                    -->
+<script>
+  let btn=document.getElementById('btn')
+        btn.addEventListener('click',function(){
+            
+              let hn=document.getElementById('nm').value
+              let area=document.getElementById('ar').value
+              let ct=document.getElementById('ct').value
+              let mob=document.getElementById('mob').value
+              let pin=document.getElementById('pin').value
+
+              if(hn == '' || area == '' || ct=='' || mob==''|| pin==''){
+                 alert('Fill information Properly ❌')
+              }
+              else{  
+              alert(hn+area+ct+mob+pin)
+            
+            let URL=`https://codingseekho.in/APP/LIFE_EXPRESS/add_hospital.php?hname=${hn}&addr=${area}&city=${ct}&mob=${mob}&pin=${pin}`
+            fetch(URL)
+            .then(response=>{
+                return response.json()
+
+            })
+            .then(data=>{
+              location.reload()
+                // console.log(data)
+                alert(response.data.posts.status, "Insert Success");
+                
+            }).catch(error=>{
+                console.log(error)
+            })
+        }
+
+        })
+</script>
+
+</body>
+</html>
+
+
+
+
+<!-- let names='tejas'
+let arr=names.split("") 
+console.log(arr)
+let ans=""
+let b=[]
+for(let i=arr.length-1;i>=0;i--){
+   b.push(arr[i])
+}
+console.log(b) -->
