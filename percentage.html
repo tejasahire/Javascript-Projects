@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Enter 1 subject Marks<input type="number" id="sub1"><br>
+    Enter 2 subject Marks<input type="number" id="sub2"><br>
+    Enter 3 subject Marks<input type="number" id="sub3"><br>
+    Enter 4 subject Marks<input type="number" id="sub4"><br>
+    Enter 5 subject Marks<input type="number" id="sub5"><br>
+    Enter 6 subject Marks<input type="number" id="sub6"><br>
+    <br><input type="button" onclick="per()" value="percentage">
+    
+
+
+    <script>
+     function per(){
+        var sub1=parseInt(document.getElementById("sub1").value)
+        var sub2=parseInt(document.getElementById("sub2").value)
+        var sub3=parseInt(document.getElementById("sub3").value)
+        var sub4=parseInt(document.getElementById("sub4").value)
+        var sub5=parseInt(document.getElementById("sub5").value)
+        var sub6=parseInt(document.getElementById("sub6").value)
+        var sum=sub1+sub2+sub3+sub4+sub5+sub6
+       // alert(sum)
+        var per=sum/6
+        if(per>70 && per<=100){
+           alert(per+"%   Distinction")
+        }
+        else if(per>60 && per<=70){
+           alert(per+"%   First Class")
+        }
+        else if(per>35 && per<=60){
+           alert(per+"%   Distinction")
+        }
+        
+
+        
+
+        }
+        
+
+
+    </script>
+</body>
+</html>
