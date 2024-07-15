@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --bs-dark-color:#1a1d20;
+    /* --bs-dark-primary:#1c1c1c; */
+    --bs-dark-primary:#090243 ;
+    --bs-main-color:#fff;
+    --bs-primary-color:#c6c6c6;
+    --secondary-color:#29a9fd;
+    --bs-supporting-color:#c850c0;
+}
+h1,h2,h3,h4,h5{
+    color: var(--bs-dark-color);
+}
+h1{
+    font-size: 3.8rem;
+}
+.text-light-gray{
+    color: var(--bs-primary-color);
+}
+h2{
+    line-height: 3rem;
+    font-weight: 600;
+    font-size: 3.4rem;
+}
+p{
+    margin: 0;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--bs-dark-color);
+    letter-spacing: 0.07rem;
+    line-height: 1.55rem;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+}
+a{
+    text-decoration: none;
+}
+button,a{
+    font-size: 1.15rem !important;
+    letter-spacing: 0.03rem;
+    word-spacing: .1rem;
+
+}
+li{
+    list-style: none;
+}
+.navbar-nav .nav-item .nav-link{
+color: var(--bs-primary-color);
+font-weight: bold;
+/* font-size: 5rem; */
+
+}
+.nav-item .nav-link:hover{
+color: var(--secondary-color);
+/* font-weight: bold; */
+/* background-color: #c850c0; */
+}
+/* hero section */
+.hero-section .container{
+    /* border: 2px solid red; */
+    display: grid;
+    place-content: center;
+    height: inherit;
+}
+.bg-main{
+    height: 80vh;
+    position: relative;
+}
+.bg-color{
+    background-color: var(--bs-dark-primary);
+
+}
+.bg-theme{
+color: var(--bs-supporting-color);
+background-image: none !important;
+}
+.hero-img{
+    /* max-width: 100%; */
+    /* height: auto; */
+    width: 30rem;
+    border-radius: 2rem;
+}
+.custom-shape-divider-bottom-1706440896 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1706440896 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1706440896 .shape-fill {
+    fill: #FFFFFF;
+}
+.common-heading{
+    font-size: 2.8rem;
+    font-weight: 500;
+    letter-spacing: 0.01rem !important;
+}
+.common-title{
+    margin-bottom: 4.2rem;
+}
+
+/* service section */
+.service-section{
+    padding: 6rem 0 3rem 0 !important;
+}
+
+</style>
+<body>   
+    <nav class="navbar navbar-expand-lg bg-color py-5 pt-lg-5">
+        <div class="container">
+          <a class="navbar-brand text-white" href="#">
+            <img src="data:image/png;base64,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" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Service</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  active text-capitalize" aria-current="page" href="#">contact us</a>
+              </li>
+               </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+<!-- hero section start-->
+
+<section class="bg-main bg-color hero-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 col-md-12 col-lg-6 d-flex flex-column justify-content-center align-items-start">
+                <h1 class="text-capitalize fw-bolder text-white">We Delivery
+                    Software Driven
+                    Innovation</h1>
+                <p class="mt-3 md-5 para-width text-light-gray">We’re A Software And Services Company That Builds And Transforms Businesses Using Advanced Technology, Data, And Innovation.</p>
+                <div class="text-center w-100 text-md-start">
+                    <button class="text-capitalize btn btn-primary px-5 px-2 mt-3" data-bs-toggle="tooltip" data-bs-title="Contact Now" >Contact Us</button>
+                </div>
+            </div>
+            <!-- hero section Image -->
+            <div class="col-12 col-md-12 col-lg-6">
+                <div class="text-center text-lg-end">
+                    <img class="hero-img" src="https://techdarshak.com/static/media/rlvnt.51720d96c4bf1759509c.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+</body>
+</html>
